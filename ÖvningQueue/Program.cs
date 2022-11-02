@@ -21,25 +21,26 @@ namespace ÖvningQueue
             patientlist.Enqueue(Eva);
             patientlist.Enqueue(Håkan);
             Console.WriteLine($"Personer i kö just nu: {patientlist.Count}\n");
+
+            //Queue<Patient> NoCovid = new Queue<Patient>();
             foreach (Patient person in patientlist)
             {
                 Console.WriteLine($"Name: {person.Name} Age: {person.Age} Id: {person.Id} Checkin Time: {person.CheckInTime} Has Covid: {person.HasCovid}");
             }
             foreach (Patient patient in patientlist)
             {
-                if (patient.HasCovid)
+                if (patient.HasCovid == true)
                 {
                     Console.WriteLine("Patienten kan inte vaccineras på grunv av pågående infektion");
                     Console.WriteLine("Personen har lämnat kön.\n");
-                    patientlist.Dequeue();
                 }
                 else
                 {
                     Console.WriteLine($"{patient.Name} är nu vaccinerad och har lämnat kön.");
-                    patientlist.Dequeue();
+
                 }
 
-                Console.ReadKey();
+    
             }
         }
     }
